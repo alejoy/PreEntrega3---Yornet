@@ -156,6 +156,7 @@ function agregarAlCarrito(producto) {
   } else {
     carrito.push(producto);
     actualizarCarrito();
+    guardarCarrito();
     console.log('Producto agregado al carrito:', producto);
   }
 }
@@ -192,7 +193,20 @@ function vaciarCarrito() {
   actualizarCarrito();
   contenedorCarrito.innerHTML = '';
   contenedorCarrito.style.display = 'none';
+  guardarCarrito();
   console.log('Carrito vaciado.');
+}
+
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function cargarCarrito() {
+  const carritoGuardado = localStorage.getItem('carrito');
+  if (carritoGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    actualizarCarrito();
+  }
 }
 
 contenedorProductos.addEventListener('click', (event) => {
@@ -213,36 +227,4 @@ contenedorProductos.addEventListener('click', (event) => {
 
 async function getProductById(id) {
   try {
-    const respuesta = await fetch(`${URL_API}/${id}`);
-    const producto = await respuesta.json();
-    return producto;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-mostrarProductos();
-
-// Añadir esta función para eliminar un producto del carrito
-function eliminarDelCarrito(producto) {
-    const index = carrito.indexOf(producto);
-    if (index > -1) {
-      carrito.splice(index, 1);
-      actualizarCarrito();
-      console.log('Producto eliminado del carrito:', producto);
-      mostrarCarrito(); // Actualizar la vista del carrito después de eliminar un producto
-    }
-  }
-  
-  contenedorCarrito.addEventListener('click', (event) => {
-    if (event.target.classList.contains('boton-vaciar')) {
-      vaciarCarrito();
-    }
-  
-    if (event.target.classList.contains('boton-eliminar')) {
-      const idProducto = event.target.getAttribute('data-id');
-      const producto = getProductById(idProducto);
-      eliminarDelCarrito(producto);
-    }
-  });
-  
+    const respuesta

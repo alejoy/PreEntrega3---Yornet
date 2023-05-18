@@ -1,74 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <title>Ejemplo de ecommerce con FakeStoreAPI</title>
-    <link rel="stylesheet" href="estilos.css">
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Online</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
     <nav>
-        <header>
-            <nav>
-              <h1>Tienda online</h1>
-              <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Acerca de</a></li>
-              </ul>
-              <div id="carrito">
-                <img src="img/carrito.png" alt="Carrito de compras">
-                <span>0</span>
-              </div>
-            </nav>
-          </header>
-      <div class="contenedor-productos">
-        <h1>Tiendita</h1>
-        <a href="#" id="carrito">Carrito (<span id="contadorCarrito">0</span>)</a>
+      <h1>Tienda Online</h1>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Acerca de</a></li>
+      </ul>
+      <div id="carrito">
+        <img src="img/carrito.png" alt="Carrito de compras">
+        <span id="contadorCarrito">0</span>
       </div>
     </nav>
-    <div class="contenedor-productos" id="productos"></div>
-    <div class="contenedor-productos" id="carrito-productos"></div>
-    <div id="contenedorCarrito">
-        <div class="botones-carrito">
-          <button class="boton-vaciar">Vaciar carrito</button>
-          <button class="boton-comprar">Comprar</button>
-        </div>
-      </div>
+  </header>
 
-      <body>
-       
-      
-        <main>
-          <div class="contenedor-productos"></div>
-      
-          <div id="contenedorCarrito">
-            <h2>Carrito de compras</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Producto</th>
-                  <th>Precio</th>
-                  <th>Cantidad</th>
-                  <th>Total</th>
-                  <th>Eliminar</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-            <div class="botones-carrito">
-              <button class="boton-comprar">Comprar</button>
-            </div>
-          </div>
-        </main>
-      
-        <footer>
-          <p>&copy; 2021 Tienda online</p>
-        </footer>
-      </body>
-      
-      
-    <script src="app.js"></script>
-  </body>
+  <main>
+    <div class="contenedor-productos" id="productos"></div>
+
+    <div id="contenedorCarrito">
+      <h2>Carrito de compras</h2>
+      <div id="carritoProductos"></div>
+      <div class="botones-carrito">
+        <button class="boton-vaciar">Vaciar carrito</button>
+        <button class="boton-comprar">Comprar</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Tienda Online</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
 </html>
 

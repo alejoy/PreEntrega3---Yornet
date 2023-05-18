@@ -8,16 +8,16 @@
 </head>
 <body>
   <header>
-    <nav>
-      <h1>Tienda Online</h1>
+    <nav class="navbar">
+      <h1>Tiendita</h1>
       <ul>
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Productos</a></li>
         <li><a href="#">Contacto</a></li>
         <li><a href="#">Acerca de</a></li>
       </ul>
-      <div id="carrito">
-        <img src="img/carrito.png" alt="Carrito de compras">
+      <div class="carrito" id="carrito">
+        <i class="fa-solid fa-cart-shopping"></i>        
         <span id="contadorCarrito">0</span>
       </div>
     </nav>
@@ -28,9 +28,20 @@
 
     <div id="contenedorCarrito">
       <h2>Carrito de compras</h2>
-      <div id="carritoProductos"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
       <div class="botones-carrito">
-        <button class="boton-vaciar">Vaciar carrito</button>
+        <button onclick="vaciarCarrito()" class="boton-vaciar">Vaciar carrito</button>
         <button class="boton-comprar">Comprar</button>
       </div>
     </div>
@@ -41,6 +52,6 @@
   </footer>
 
   <script src="app.js"></script>
-</body>
+  <script src="https://kit.fontawesome.com/19b5ae0bce.js" crossorigin="anonymous"></script></body>
 </html>
 

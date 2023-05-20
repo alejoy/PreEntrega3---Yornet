@@ -4,29 +4,15 @@ const carritoElemento = document.querySelector('#carrito');
 const contadorCarrito = document.querySelector('#contadorCarrito');
 const contenedorCarrito = document.querySelector('#contenedorCarrito');
 let carrito = [];
-
-// Obtener los datos del carrito guardados en el Local Storage al cargar la página
-function obtenerCarritoLocalStorage() {
-  const carritoJSON = localStorage.getItem('carrito');
-  if (carritoJSON) {
-    carrito = JSON.parse(carritoJSON);
-    actualizarCarrito();
-  }
-}
-
-// Guardar los datos del carrito en el Local Storage
-function guardarCarritoLocalStorage() {
-  const carritoJSON = JSON.stringify(carrito);
-  localStorage.setItem('carrito', carritoJSON);
-}
+let products = [];
 
 async function mostrarProductos() {
   try {
     const respuesta = await fetch(URL_API);
     const productos = await respuesta.json();
     let html = '';
- console.log(productos)
     productos.forEach(producto => {
+      products.push(producto);
       html += `
         <div class="item-producto">
           <img src="${producto.image}" alt="${producto.title}">
@@ -36,7 +22,9 @@ async function mostrarProductos() {
         </div>
       `;
     });
-
+    console.log("products");
+console.log(products);
+console.log("products");
     contenedorProductos.innerHTML = html;
   } catch (error) {
     console.log(error);
@@ -44,11 +32,11 @@ async function mostrarProductos() {
 }
 
 function agregarAlCarrito(productos) {
-  if (carrito.includes(productos)) {
+   if (carrito.includes(productos)) {
     console.log('El producto ya está en el carrito.');
   } else {
     carrito.push(productos);
-    actualizarCarrito();
+     actualizarCarrito();
     guardarCarritoLocalStorage(); // Guardar los datos del carrito en el Local Storage
     console.log('Producto agregado al carrito:', productos);
   }
@@ -68,7 +56,7 @@ function actualizarCarrito() {
 function mostrarCarrito() {
   let html = '';
 console.log(carrito)
-  carrito.forEach(productos => {
+    carrito.forEach(productos => {
     html += `
       <div class="item-carrito">
         <h3>${productos.title}</h3>
@@ -88,6 +76,22 @@ console.log(carrito)
   contenedorCarrito.style.display = 'block';
 }
 
+
+// Guardar los datos del carrito en el Local Storage
+function guardarCarritoLocalStorage() {
+  const carritoJSON = JSON.stringify(carrito);
+  console.log(carritoJSON)
+  localStorage.setItem('carrito', carritoJSON);
+}
+
+// Obtener los datos del carrito guardados en el Local Storage al cargar la página
+function obtenerCarritoLocalStorage() {
+  const carritoJSON = localStorage.getItem('carrito');
+  if (carritoJSON) {
+    carrito = JSON.parse(carritoJSON);
+  }
+}
+
 const botonVaciarCarrito = document.querySelector('.boton-vaciar');
 botonVaciarCarrito.addEventListener('click', vaciarCarrito);
 
@@ -100,10 +104,13 @@ function vaciarCarrito() {
   console.log('Carrito vaciado.');
 }
 
-contenedorProductos.addEventListener('click', (event) => {
+contenedorProductos.addEventListener('click', async(event) => {
   if (event.target.classList.contains('boton-agregar')) {
     const idProducto = event.target.getAttribute('data-id');
-    const producto = getProductById(idProducto);
+    const producto = await getProductById(idProducto);
+    console.log("Producto");
+    console.log(producto);
+    console.log("Producto");
     agregarAlCarrito(producto);
   }
 
@@ -118,8 +125,8 @@ contenedorProductos.addEventListener('click', (event) => {
 
 async function getProductById(id) {
   try {
-    const respuesta = await fetch(`${URL_API}/${id}`);
-    const producto = await respuesta.json();
+    const respuesta = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const producto = await respuesta.json(); 
     return producto;
   } catch (error) {
     console.log(error);

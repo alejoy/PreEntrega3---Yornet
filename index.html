@@ -33,15 +33,19 @@
           <tr>
             <th>Producto</th>
             <th>Precio</th>
-            <th>Cantidad</th>
             <th>Total</th>
             <th>Eliminar</th>
           </tr>
+          <tr id="filaTotal">
+            <td colspan="3"></td>
+            <td>Total:</td>
+            <td id="totalCarrito" colspan="1"></td>
+          </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="tbodyCarrito"></tbody>
       </table>
       <div class="botones-carrito">
-        <button onclick="vaciarCarrito()" class="boton-vaciar">Vaciar carrito</button>
+        <button class="boton-vaciar">Vaciar carrito</button>
         <button class="boton-comprar">Comprar</button>
       </div>
     </div>

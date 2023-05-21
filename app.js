@@ -10,6 +10,7 @@ async function mostrarProductos() {
     const respuesta = await fetch(URL_API);
     const productos = await respuesta.json();
     let html = '';
+    
     productos.forEach(producto => {
       productos.push(producto);
       html += `

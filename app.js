@@ -160,6 +160,15 @@ contenedorProductos.addEventListener('click', async(event) => {
     const idProducto = event.target.getAttribute('data-id');
     const producto = await getProductById(idProducto);
     agregarAlCarrito(producto);
+      Toastify({
+        text: 'Producto agregado',
+        duration: 3000, 
+        close: true,
+        gravity: 'bottom', 
+        position: 'right',
+        backgroundColor: 'green', 
+        stopOnFocus: true 
+      }).showToast();
   }
 
   if (event.target.id === 'carrito') {

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tienda Online</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 </head>
 <body>
   <header>
@@ -49,6 +51,86 @@
         <button class="boton-comprar">Comprar</button>
       </div>
     </div>
+
+    <div id="contenedorFormulario">
+      <h2>Formulario de contacto</h2>
+      <form id="formularioContacto">
+        <div class="campo-formulario">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="campo-formulario">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="campo-formulario">
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        </div>
+        <div class="campo-formulario">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+    <!-- Modal Formulario Confirmacion -->
+    <div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalConfirmacionLabel">¡Formulario enviado!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Tu información se ha enviado correctamente.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Comprar -->
+<div class="modal fade" id="modalComprar" tabindex="-1" role="dialog" aria-labelledby="modalComprarLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalComprarLabel">Confirmar Compra</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Vas a comprar estos productos:</h6>
+        <ul id="listaProductos" class="list-group"></ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Confirmar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Gracias -->
+<div id="modalMensaje" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalMensajeLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalMensajeLabel">Mensaje de Confirmación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="mensaje-compra">Gracias por su compra</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
   </main>
 
   <footer>
@@ -56,6 +138,10 @@
   </footer>
 
   <script src="app.js"></script>
-  <script src="https://kit.fontawesome.com/19b5ae0bce.js" crossorigin="anonymous"></script></body>
+  <script src="https://kit.fontawesome.com/19b5ae0bce.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
 </html>
 

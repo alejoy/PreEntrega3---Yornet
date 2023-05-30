@@ -151,8 +151,6 @@ function eliminarProducto(id) {
     console.log(carrito);
     // Actualizar el carrito en el Local Storage
     guardarCarritoLocalStorage();
-
-    // Volver a mostrar el carrito actualizado
     mostrarCarrito();
   }
 }
@@ -198,3 +196,53 @@ window.addEventListener('load', () => {
   actualizarCarrito(); // Actualizar el contador del carrito al cargar la página
 
 });
+
+document.getElementById('formularioContacto').addEventListener('submit', function (event) {
+  event.preventDefault(); 
+
+  // Mostrar el modal de confirmación
+  $('#modalConfirmacion').modal('show');
+});
+
+// Agregar evento de clic al botón "Comprar"
+const botonComprar = document.querySelector('.boton-comprar');
+botonComprar.addEventListener('click', mostrarModalComprar);
+
+// Función para mostrar el modal de compra
+function mostrarModalComprar() {
+  const listaProductosElemento = document.querySelector('#listaProductos');
+  listaProductosElemento.innerHTML = '';
+  carrito.forEach(producto => {
+    const li = document.createElement('li');
+    li.classList.add('list-group-item');
+    li.textContent = producto.title;
+    listaProductosElemento.appendChild(li);
+  });
+
+  $('#modalComprar').modal('show');
+}
+
+// Agregar evento de clic al botón "Confirmar Compra" del modal
+const botonConfirmarCompra = document.querySelector('#modalComprar .btn-primary');
+botonConfirmarCompra.addEventListener('click', confirmarCompra);
+
+// Función para confirmar la compra
+function confirmarCompra() {
+  const mensajeCompra = document.querySelector('#modalMensaje .mensaje-compra');
+  mensajeCompra.textContent = 'Gracias por su compra';
+
+  $('#modalComprar').modal('hide');
+  $('#modalMensaje').modal('show');
+
+  // Ocultar el modal después de 3 segundos
+  setTimeout(() => {
+    $('#modalMensaje').modal('hide');
+    mensajeCompra.textContent = '';
+  }, 3000);
+
+  carrito = [];
+  actualizarCarrito();
+  guardarCarritoLocalStorage();
+}
+
+
